@@ -62,7 +62,7 @@ int main()
     //init now stores the reverse topological sort(last item upwards)
     
     //Used to get correct output from init
-    //E.g. if 4 is the boss of 1 then the first value outputted is 1
+    //E.g. if 4 is the boss of 1 then the first value outputted is 4
     //And then if 3 is the boss of 2 then the second value outputted is 3
     pos = 0;
     for(int i=n-1; i>=0; i--){
