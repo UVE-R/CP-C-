@@ -44,15 +44,14 @@ void dfs(int s, int n, int c){
 
 int main()
 {
+	
     //Set all values to zero
-    memset(colour, 0, sizeof(colour));
+	memset(colour, 0, sizeof(colour));
 	memset(cross, 0, sizeof(cross));
 	memset(vis, 0, sizeof(vis));
 	memset(adj, 0, sizeof(adj));
-    int i, j, k;
+	
 	int n, m;
-	int x, y;
-
     //n is vertices, m is pairs
     cin>>n>>m;
     for(int i=0;i<m;i++){
