@@ -47,14 +47,16 @@ int main()
             cin >>c;
             v.push_back(c);
         }
-        
+        //If there is only one tree then there will not be an triangle
+        //If there is two trees then there will only be one triangle
         if (b==1){
             cout<<0<<endl;
         }else if(b==2){
             cout<<1<<endl;
         }else{
-            set <int> set;
-            
+         //Finds the different lengths of the sides of triangles as these will have unique areas, then stores in a set as a set will not contain repeats
+         //Complexity is O(n^2)
+            set <int> set;            
             for(int k=0;k<v.size();k++){
                 for (int m=k; m< v.size()-1;m++){
                     int diff = v[m+1]- v[k];
