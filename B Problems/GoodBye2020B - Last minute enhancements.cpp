@@ -30,6 +30,8 @@ const ll INF = 1e18 + 10;
 const int mod = 998244353;
 const int base = 257;
  
+
+//GREEDY ALGORITHM
 int main()
 {
     InTheNameOfGod
@@ -37,6 +39,7 @@ int main()
     int a;
     cin>>a;
  
+     
     for(int i=0;i<a;i++){
         long b;
         cin>>b;
@@ -45,24 +48,26 @@ int main()
         for(int j=0;j<b;j++){
             int c;
             cin >>c;
+         //Store song in set an vector
             set.insert(c);
             v.push_back(c);
         }
-        
-        int d = v[0];
-        
-        
+        //Starting value
+        int d = v[0];     
+        //Stores the value which was last added to the set
         int last = 0;
+        
+        //If there is only one note then the output is one
         if (b==1){
             cout<<1<<endl;
         }else{
             for(int j=1;j<b;j++){
-                //cout<<" Checking: "<<v[j]<< " End is: "<<last;
+             //Loop through vector, if the current item is a copy then add one to the current item and add it into the set
                 if(d==v[j]){
-                    //cout<<v[j]+1<<" ";
                    set.insert(v[j]+1);
                    last = v[j]+1;
                 }else{
+                 //If the current item is the same as the value added prevously to the set then this item can be incremented as it is already represented in the set
                     if(v[j] == last){
                         set.insert(v[j]+1);
                         last = v[j]+1;
@@ -70,8 +75,7 @@ int main()
                     d=v[j];
                 }
                 
-            }
-            
+            }            
             /*
             cout<<"Set is: ";
             for (auto it = set.begin(); it !=set.end(); ++it) {
