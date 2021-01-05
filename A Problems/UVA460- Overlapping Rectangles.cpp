@@ -39,14 +39,17 @@ int main()
     cin>>a;
 
     for(int i=0;i<a;i++){
-
+        //First rectangle
+        //(x1,y1) = bottom left
+        //(x2,y2) = top right
         int x1,y1,x2,y2;
-
         cin>>x1>>y1;
         cin>>x2>>y2;
 
+        //Second Rectangle
+        //(x3,y3) = bottom left
+        //(x4,y4) = top right
         int x3,y3,x4,y4;
-
         cin>>x3>>y3;
         cin>>x4>>y4;
 
@@ -59,6 +62,7 @@ int main()
             cout<<"No Overlap"<<endl;
         }        
         
+        //UVA does not want a new line after the last output
         if(i==a-1){
             break;
         }
