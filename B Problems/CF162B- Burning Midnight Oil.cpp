@@ -65,7 +65,6 @@ ll bs(ll n, int k){
 
 }
 
-
 int main()
 {
     InTheNameOfGod
@@ -78,6 +77,3 @@ int main()
 
     return 0;
 }
-
-
-
