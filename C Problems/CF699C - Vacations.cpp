@@ -55,29 +55,47 @@ int main(){
         arr[i] = a;
     }
 
-    //DP stores minimum days of rest if activity J is done before
-    // J=1 is contest, J=2 is gym, J=3 is rest
+    /*
+    dp[i][j] stores the minimum rests taken when task J is done
+
+    j=0 is rest, j=1 is contest, j=2 is gym
+
+
+    Look at current days value:
+        if is is 0, then we need to get the minimum of all the previous days rests
+
+        if it is 1 or 3, then we can go do a contest, so we need to get the minimum of all the previous days rests, and as
+            we cant do a contest after doing one prior, we only get the minimum of the previous rest or gym
+
+        if it is 2 or 3, then we can go to the gym, so we need to get the minimum of all the previous days rests, and as
+            we cant go to the gym after going prior, we only get the minimum of the previous rest or contest
+
+    */
+
     for(int i=1;i<=n;i++){
-            dp[i][0]=min({dp[i-1][0],dp[i-1][1],dp[i-1][2]})+1;
+        dp[i][0]=min({dp[i-1][0],dp[i-1][1],dp[i-1][2]})+1; //Each day we can take a rest, or when arr[i-1] == 0 this is carried out (i.e. We have to take a rest)
 
-            dp[i][2]=dp[i][1]=OO;
+        dp[i][2]=dp[i][1]=OO;
 
-            if(arr[i-1]&1){   //Contest
-                dp[i][1]=min(dp[i-1][2],dp[i-1][0]); //Minimum of previous rest or gym
-            }
-            if(arr[i-1]&2){ //Gym
-                dp[i][2]=min(dp[i-1][1],dp[i-1][0]); //Minimum of previous rest or contest
+        if(arr[i-1]&1){   //Contest (when 1 or 3)
+            dp[i][1]=min(dp[i-1][2],dp[i-1][0]); //Minimum of previous rest or gym
+        }
 
-            }
+        if(arr[i-1]&2){ //Gym (when 2 or 3)
+            dp[i][2]=min(dp[i-1][1],dp[i-1][0]); //Minimum of previous rest or contest
+
+        }
     }
 
-    int ans = OO;
 
+    //Get the minimum of all 3 branches
+    int ans = OO;
     lp(i,3){
         ans = min(ans,dp[n][i]);
     }
 
     cout<<ans<<endl;
+
 
     return 0;
 }
